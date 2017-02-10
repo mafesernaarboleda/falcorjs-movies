@@ -1,0 +1,15 @@
+{
+  "name": "falcorjs-movies",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "falcor": "^0.1.12",
+    "falcor-express": "^0.1.2",
+    "falcor-router-demo": "^1.0.4",
+    "falcor-router": "^0.2.9",
+    "lodash": "^3.10.1"
+  }
+}
