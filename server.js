@@ -49,7 +49,27 @@ app.use('/model.json', falcorExpress.dataSourceRoute(function (req, res) {
         })
         return results
       }
+    },
+    {
+      route: "movies.byGenre[{keys}]['title']",
+      get: function (pathSet) {
+        let results = []
+        pathSet[2].forEach(function (gender) {
+          db.movies.forEach(function (movie) {
+            console.log(movie.genre.name)
+
+            if (_.contains(movie.genre.name, gender)) {
+              results.push({
+                path: ['movies', 'byGenre', byGenre],
+                value: movie
+              })
+            }
+          })
+        })
+        return results
+      }
     }
+
   ])
 }))
 

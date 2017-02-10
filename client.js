@@ -1,8 +1,9 @@
 const model = new falcor.Model({source: new falcor.HttpDataSource('/model.json')})
 
-  .get(['genreById', [1, 2, 5, 4, 8] , ['name']])
+model.get(['movies', 'byGenre', ['Action'], ['title']])
   .then(function (response) {
-    var movies = response.json.genreById
+    console.log(response)
+    var movies = response.json.movies.byGenre
     var source = document.getElementById('movie-template').innerHTML
     var template = Handlebars.compile(source)
     document.getElementById('data').innerHTML = template(movies)
