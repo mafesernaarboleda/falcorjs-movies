@@ -19,6 +19,23 @@ app.use('/model.json', falcorExpress.dataSourceRoute(function (req, res) {
           value: db.movies
         }
       }
+    },
+    {
+      route: "movies.byTitle[{keys}]['title', 'releaseYear', 'image']",
+      get: function (pathSet) {
+        var results = []
+        pathSet[2].forEach(function (title) {
+          db.movies.forEach(function (movie) {
+            if (_.contains(movie.title, title)) {
+              results.push({
+                path: ['movies', 'byTitle', title],
+                value: movie
+              })
+            }
+          })
+        })
+        return results
+      }
     }
   ])
 }))
