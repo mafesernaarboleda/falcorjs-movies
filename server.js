@@ -23,7 +23,7 @@ app.use('/model.json', falcorExpress.dataSourceRoute(function (req, res) {
     {
       route: "movies.byTitle[{keys}]['title', 'releaseYear', 'image']",
       get: function (pathSet) {
-        var results = []
+        let results = []
         pathSet[2].forEach(function (title) {
           db.movies.forEach(function (movie) {
             if (_.contains(movie.title, title)) {
@@ -32,6 +32,19 @@ app.use('/model.json', falcorExpress.dataSourceRoute(function (req, res) {
                 value: movie
               })
             }
+          })
+        })
+        return results
+      }
+    },
+    {
+      route: "genreById[{integers:genreId}]['name']",
+      get: function (pathSet) {
+        let results = []
+        pathSet[1].forEach(function (genreId) {
+          results.push({
+            path: ['genreById', genreId],
+            value: db.genreById[genreId]
           })
         })
         return results

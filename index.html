@@ -6,7 +6,7 @@
         <title>FalcorJs</title>
     </head>
     <body>
-      <h1>Movies</h1>
+      <h1>Movies - Gender</h1>
       <div id="data"></div>
     </body>
 
@@ -16,9 +16,14 @@
     <script id="movie-template" type="text/x-handlebars-template">
   {{#each this}}
     <div class="movie">
+      {{#if image}}
       <img src="{{image}}" alt={{title}} class="cover">
+      {{/if}}
       {{#if title}}
       <span class="title">Title : {{title}}</span>
+      {{/if}}
+      {{#if name}}
+      <span class="title">Name Gender : {{name}}</span>
       {{/if}}
        {{#if releaseYear}}
       <span class="release">Release Year: {{releaseYear}}</span>
