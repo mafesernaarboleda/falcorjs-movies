@@ -1,6 +1,6 @@
 const model = new falcor.Model({source: new falcor.HttpDataSource('/model.json')})
 
-model.get(['movies', 'byGenre', ['Action'], ['title']])
+model.get(['movies', 'byGenre', [1], ['title']])
   .then(function (response) {
     console.log(response)
     var movies = response.json.movies.byGenre
